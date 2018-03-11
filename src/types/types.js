@@ -1,0 +1,1 @@
+export const SSSL_SAMPLE = "SSSL_SAMPLE";
