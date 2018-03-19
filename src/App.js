@@ -10,7 +10,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import reducer from "./reducers/reducers";
-import MainScreen from './screens/MainScreen/Mainscreen';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
 
 const loggerMiddleware = createLogger({ predicate: () => __DEV__ });
 
@@ -38,7 +38,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <MainScreen/>
+          <LoginScreen/>
         </View>
       </Provider>
     );
