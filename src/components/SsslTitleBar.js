@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import SsslStyles from '../components/SsslStyles';
 
 export default class SsslTitleBar extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ const styles = EStyleSheet.create({
   },
   titleBarText: {
     fontSize: 16,
-    color: 'white',
+    color: '$ssslSecondaryColor',
     fontFamily: "$ssslFont"
   }
 });
