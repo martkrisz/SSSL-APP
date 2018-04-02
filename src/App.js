@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, BackHandler } from 'react-native';
+import { View, BackHandler, Alert } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -8,8 +8,24 @@ import { createReactNavigationReduxMiddleware, createReduxBoundAddListener } fro
 import { enableBatching } from 'redux-batched-actions';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import {reducer as network} from 'react-native-offline';
+import {offlineActionTypes} from 'react-native-offline';
+import {withNetworkConnectivity} from 'react-native-offline';
 import reducer from './reducers/reducers';
 import Root from './Router';
+
+const checkNetwork = (action) => {
+  if (action.type === offlineActionTypes.CONNECTION_CHANGE && action.payload === false) {
+    Alert.alert(
+      'Hálózati hiba',
+      'Nem található hálózat.',
+      [
+        { text: 'OK' },
+      ],
+      { cancelable: false }
+    )
+  }
+};
 
 const loggerMiddleware = createLogger({ predicate: () => __DEV__ });
 
@@ -19,6 +35,7 @@ const AppNavigator = StackNavigator(Root, { headerMode: 'none' });
 
 const navReducer = (state, action) => {
   const newState = AppNavigator.router.getStateForAction(action, state);
+  checkNetwork(action);
   return newState || state;
 };
 
@@ -29,7 +46,8 @@ const navMiddleware = createReactNavigationReduxMiddleware(
 
 @connect(state => ({
   nav: state.nav,
-  global: state.reducer
+  global: state.reducer,
+  network: state.network
 }))
 class ReduxNavigation extends PureComponent {
 
@@ -66,7 +84,8 @@ class ReduxNavigation extends PureComponent {
 
 const appReducer = combineReducers({
   nav: navReducer,
-  reducer
+  reducer,
+  network
 });
 
 const rootReducer = (state, action) => {
@@ -92,10 +111,20 @@ function configureStore(initialState) {
 
 const store = configureStore({});
 
+let NetworkApp = () => (
+  <View style={{flex: 1}}>
+    <ReduxNavigation />
+  </View>
+);
+
+NetworkApp = withNetworkConnectivity({
+  withRedux: true
+})(NetworkApp);
+
 export default function App(){
     return (
       <Provider store={store}>
-          <ReduxNavigation/>
+          <NetworkApp/>
       </Provider>
     );
 }
