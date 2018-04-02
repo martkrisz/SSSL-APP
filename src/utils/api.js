@@ -63,7 +63,7 @@ class Api {
     }
 
     static xhr(route, params, verb) {
-        const host = ""; // TODO host szerver címe
+        const host = "https://virtserver.swaggerhub.com/sssl-web/app/1.0.0"; // TODO mock lecserélése
         const url = `${host}${route}`;
 
         if (params != null) {
