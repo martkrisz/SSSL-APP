@@ -10,13 +10,13 @@ import Images from './assets/img/Images';
 
 const MainTabs = TabNavigator(
   {
-    Camp: {
+    Táborok: {
       screen: CampScreen
     },
-    Form: {
+    Kérdőívek: {
       screen: FormScreen
     },
-    Profile: {
+    Profilom: {
       screen: ProfileScreen
     }
   },
@@ -32,10 +32,10 @@ const MainTabs = TabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: '#686969',
-      inactiveTintColor: '#686969',
+      activeTintColor: 'blue',
+      inactiveTintColor: 'black',
       labelStyle: {
-        fontSize: 10.5,
+        fontSize: 12,
         fontFamily: '$ssslFont_Bold'
       },
       style: {
