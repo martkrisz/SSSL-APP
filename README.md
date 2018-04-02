@@ -19,4 +19,4 @@ API dokumentáció: https://app.swaggerhub.com/apis/sssl-web/app/1.0.0#/
 
 Postman Collection API teszteléshez a gyökérkönyvtárban.
 
-Swagger Mock szerver baseUrl: virtserver.swaggerhub.com/sssl-web/app/1.0.0
+Swagger Mock szerver baseUrl: https://virtserver.swaggerhub.com/sssl-web/app/1.0.0
