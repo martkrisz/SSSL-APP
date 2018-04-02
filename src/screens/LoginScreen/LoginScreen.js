@@ -92,6 +92,7 @@ class LoginScreen extends Component {
   login = () => {
     if(this.state.isSubmitted && !this.state.isUserNameErrorShown && !this.state.isPasswordErrorShown) {
       //this.props.login({userName: this.state.userName, password: this.state.password});
+      this.props.navigation.navigate("Home");
     }
   };
 }
