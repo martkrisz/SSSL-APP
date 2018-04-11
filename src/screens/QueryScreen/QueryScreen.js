@@ -7,14 +7,14 @@ import SsslTitleBar from '../../components/SsslTitleBar';
 import { ActionCreators } from '../../actions/actions';
 import styles from './styles';
 
-class FormScreen extends Component {
+class QueryScreen extends Component {
 
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-
+    this.props.getQueries();
   }
 
   render() {
@@ -29,14 +29,14 @@ class FormScreen extends Component {
   }
 }
 
-FormScreen.propTypes = {};
+QueryScreen.propTypes = {};
 
 const mapStateToProps = (state, props) => ({
-
+  queries: state.reducer.loadedQueries
 });
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(QueryScreen);

@@ -4,7 +4,7 @@ import { Image } from 'react-native';
 
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import CampScreen from './screens/CampScreen/CampScreen';
-import FormScreen from './screens/FormScreen/FormScreen';
+import QueryScreen from './screens/QueryScreen/QueryScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import Images from './assets/img/Images';
 
@@ -14,7 +14,7 @@ const MainTabs = TabNavigator(
       screen: CampScreen
     },
     Kérdőívek: {
-      screen: FormScreen
+      screen: QueryScreen
     },
     Profilom: {
       screen: ProfileScreen

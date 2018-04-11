@@ -3,6 +3,8 @@ import { NavigationActions } from "react-navigation";
 import { AsyncStorage } from "react-native";
 import { batchActions } from "redux-batched-actions";
 
+import * as types from './../types/types';
+
 export function initApp() {
     
 }

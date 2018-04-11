@@ -11,8 +11,10 @@ import { createLogger } from 'redux-logger';
 import {reducer as network} from 'react-native-offline';
 import {offlineActionTypes} from 'react-native-offline';
 import {withNetworkConnectivity} from 'react-native-offline';
+import {FullscreenLoader} from './components/FullscreenLoader';
 import reducer from './reducers/reducers';
 import Root from './Router';
+import renderIf from './utils/RenderUtil';
 
 const checkNetwork = (action) => {
   if (action.type === offlineActionTypes.CONNECTION_CHANGE && action.payload === false) {
@@ -78,7 +80,17 @@ class ReduxNavigation extends PureComponent {
       state: nav
     });
 
-    return <AppNavigator navigation={navigation} />;
+    return (
+      <View style={{ flex: 1 }}>
+        <AppNavigator navigation={navigation} />
+        {renderIf(
+          this.props.global.showLoading.isFetching,
+          <FullscreenLoader
+            visible={this.props.global.showLoading.isFetching}
+          />
+        )}
+      </View>
+    )
   }
 }
 

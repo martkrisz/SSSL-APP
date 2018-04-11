@@ -1,1 +1,6 @@
-export const SSSL_SAMPLE = "SSSL_SAMPLE";
+export const SSSL_SAMPLE = 'SSSL_SAMPLE';
+
+export const APP_IS_LOADING = 'APP_IS_LOADING';
+export const CLEAR_LOADING = 'CLEAR_LOADING';
+
+export const QUERIES_LOADED = 'QUERIES_LOADED';
