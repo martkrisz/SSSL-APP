@@ -28,7 +28,7 @@ export function getQueries() {
 export function getSingleQuery(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/queries/${id}`)
+    return Api.get(`/query/${id}`)
       .then(resp => {
         dispatch(
           batchActions(

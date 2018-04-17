@@ -28,7 +28,7 @@ export function getEvents() {
 export function getSingleEvent(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/events/${id}`)
+    return Api.get(`/event/${id}`)
       .then(resp => {
         dispatch(
           batchActions(
@@ -42,6 +42,32 @@ export function getSingleEvent(id) {
         dispatch(GlobalActions.showLoading(false));
       }
       );
+  }
+}
+
+export function deleteApplication(id) {
+  return (dispatch) => {
+    dispatch(GlobalActions.showLoading(true));
+    return Api.delete(`/event/${id}`)
+      .then(resp => {
+        dispatch(GlobalActions.showLoading(false));
+      }).catch(ex => {
+        dispatch(GlobalActions.showLoading(false));
+      }
+    );
+  }
+}
+
+export function modifyApplication(id) {
+  return (dispatch) => {
+    dispatch(GlobalActions.showLoading(true));
+    return Api.put(`/event/${id}`)
+      .then(resp => {
+        dispatch(GlobalActions.showLoading(false));
+      }).catch(ex => {
+        dispatch(GlobalActions.showLoading(false));
+      }
+    );
   }
 }
 
