@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 
 import LoginScreen from './screens/LoginScreen/LoginScreen';
-import CampScreen from './screens/CampScreen/CampScreen';
+import EventScreen from './screens/EventScreen/EventScreen';
 import QueryScreen from './screens/QueryScreen/QueryScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import Images from './assets/img/Images';
 
 const MainTabs = TabNavigator(
   {
-    Táborok: {
-      screen: CampScreen
+    Események: {
+      screen: EventScreen
     },
     Kérdőívek: {
       screen: QueryScreen

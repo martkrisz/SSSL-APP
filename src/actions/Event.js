@@ -5,15 +5,15 @@ import { AsyncStorage } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
 
-export function getQueries() {
+export function getEvents() {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/queries`)
+    return Api.get(`/events`)
       .then(resp => {
         dispatch(
           batchActions(
             [
-              setQueries(resp),
+              setEvents(resp),
               GlobalActions.showLoading(false)
             ]
           )
@@ -21,19 +21,19 @@ export function getQueries() {
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
       }
-      )
+      );
   };
 }
 
-export function getSingleQuery(id) {
+export function getSingleEvent(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/queries/${id}`)
+    return Api.get(`/events/${id}`)
       .then(resp => {
         dispatch(
           batchActions(
             [
-              setSingleQuery(resp),
+              setSingleEvent(resp),
               GlobalActions.showLoading(false)
             ]
           )
@@ -45,16 +45,16 @@ export function getSingleQuery(id) {
   }
 }
 
-function setQueries(result) {
+function setEvents(message) {
   return {
-    type: types.QUERIES_LOADED,
-    result
+    type: types.EVENTS_LOADED,
+    message
   };
 }
 
-function setSingleQuery(result) {
+function setSingleEvent(message) {
   return {
-    type: types.SINGLE_QUERY_LOADED,
-    result
+    type: types.SINGLE_EVENT_LOADED,
+    message
   };
 }

@@ -6,7 +6,7 @@ import { batchActions } from "redux-batched-actions";
 import * as types from './../types/types';
 
 export function initApp() {
-    
+
 }
 
 export function navigateWithReset(screenName) {

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SsslTitleBar from '../../components/SsslTitleBar';
-
 import { ActionCreators } from '../../actions/actions';
+
 import styles from './styles';
+import SsslTitleBar from '../../components/SsslTitleBar';
 
 class QueryScreen extends Component {
 
