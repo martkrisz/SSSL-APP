@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import SsslStyles from '../components/SsslStyles';
 
 export default class SsslButton extends Component {
@@ -11,9 +11,8 @@ export default class SsslButton extends Component {
 
   render() {
     return (
-      <TouchableHighlight
-        activeOpacity={1}
-        underlayColor={"black"}
+      <TouchableOpacity
+        activeOpacity={0.75}
         style={[styles.button, this.props.style]}
         onPress={() => {
           if (this.props.onPress) {
@@ -24,7 +23,7 @@ export default class SsslButton extends Component {
         <Text style={[styles.buttonText, this.props.textStyle]}>
           {this.props.title && this.props.title}
         </Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

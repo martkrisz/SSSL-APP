@@ -37,7 +37,7 @@ const styles = EStyleSheet.create({
     right: 0,
     left: 0,
     bottom: 0,
-    backgroundColor: 'grey',
+    backgroundColor: '#3399FF',
     alignItems: 'center',
     justifyContent: 'center'
   },

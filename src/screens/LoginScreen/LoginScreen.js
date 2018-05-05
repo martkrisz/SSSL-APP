@@ -28,7 +28,7 @@ class LoginScreen extends Component {
   passwordInputRef = null;
 
   componentDidMount() {
-    
+    this.props.initApp();
   }
 
   render() {

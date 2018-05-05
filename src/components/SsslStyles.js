@@ -9,7 +9,7 @@ module.exports = {
   variables: EStyleSheet.build({
     $ssslGrey: "rgb(228,228,228)",
     $ssslTextGrey: "rgb(105,105,105)",
-    $ssslPrimaryColor: "rgb(0,0,255)",
+    $ssslPrimaryColor: "rgb(51, 153, 255)",
     $ssslSecondaryColor: "white",
     $ssslFont: "HelveticaNeue",
     $ssslFont_Italic: "HelveticaNeue-Italic",
