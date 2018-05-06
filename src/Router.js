@@ -6,6 +6,9 @@ import LoginScreen from './screens/LoginScreen/LoginScreen';
 import EventScreen from './screens/EventScreen/EventScreen';
 import QueryScreen from './screens/QueryScreen/QueryScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import SingleEventScreen from './screens/SingleEventScreen/SingleEventScreen';
+import SingleQueryScreen from './screens/SingleQueryScreen/SingleQueryScreen';
+import FormScreen from './screens/FormScreen/FormScreen';
 import Images from './assets/img/Images';
 
 const MainTabs = TabNavigator(
@@ -47,7 +50,7 @@ const MainTabs = TabNavigator(
     tabBarPosition: 'bottom',
     animationEnabled: true,
     swipeEnabled: false,
-    lazy: false
+    lazy: true
   }
 );
 
@@ -57,6 +60,15 @@ const Root = {
   },
   Home: {
     screen: MainTabs
+  },
+  Forms: {
+    screen: FormScreen
+  },
+  SingleEvent: {
+    screen: SingleEventScreen
+  },
+  SingleQuery: {
+    screen: SingleQueryScreen
   }
 };
 

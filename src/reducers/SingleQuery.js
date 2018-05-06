@@ -1,14 +1,14 @@
 import * as types from '../types/types';
 import createReducer from '../utils/createReducer';
 
-export const loadedQueries = (createReducer(
+export const loadedSingleQuery = (createReducer(
     {
-      queries: []
+      singleQuery: null
     },
     {
-      [types.QUERIES_LOADED](state, action) {
+      [types.SINGLE_QUERY_LOADED](state, action) {
         let newState = {
-            queries : action.message
+          singleQuery: action.message
         };
         return newState;
       }

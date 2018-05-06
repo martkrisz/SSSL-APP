@@ -1,7 +1,7 @@
 import * as types from "../types/types";
 import Api from "../utils/api";
 import { NavigationActions } from "react-navigation";
-import { AsyncStorage } from "react-native";
+import { Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
 
@@ -19,9 +19,9 @@ export function getEvents() {
           )
         );
       }).catch(ex => {
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getEvents');
         dispatch(GlobalActions.showLoading(false));
-      }
-      );
+      });
   };
 }
 
@@ -33,22 +33,21 @@ export function getSingleEvent(id) {
         dispatch(
           batchActions(
             [
-              setSingleEvent(resp),
-              GlobalActions.showLoading(false)
+              GlobalActions.showLoading(false),
             ]
           )
         );
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
-      }
-      );
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleEvent');
+      });
   }
 }
 
 export function deleteApplication(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.delete(`/event/${id}`)
+    return Api.delete(`/form/${id}`)
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
       }).catch(ex => {
@@ -61,7 +60,7 @@ export function deleteApplication(id) {
 export function modifyApplication(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.put(`/event/${id}`)
+    return Api.put(`/form/${id}`)
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
       }).catch(ex => {

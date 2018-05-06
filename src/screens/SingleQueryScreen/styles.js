@@ -7,26 +7,20 @@ export default EStyleSheet.create({
   },
 
   body: {
+    paddingVertical: "$ssslBodyPadding",
     paddingHorizontal: 20,
-    paddingTop: 20,
+  },
+
+  field: {
     marginBottom: 20
   },
 
-  event: {
-    marginBottom: 20
+  label: {
+    marginBottom: 10
   },
 
-  eventName: {
-    fontSize: 25,
-    color: "$ssslPrimaryColor",
-    marginBottom: 15
-  },
-
-  buttonSection: {
-    marginTop: 20
-  },
-
-  button: {
-    marginTop: 20
+  radioForm: {
+    alignSelf: "flex-start"
   }
+  
 });

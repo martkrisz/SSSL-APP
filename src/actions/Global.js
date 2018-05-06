@@ -1,6 +1,6 @@
 import Api from "../utils/api";
 import { NavigationActions } from "react-navigation";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import SplashScreen from 'react-native-splash-screen';
 
@@ -20,9 +20,9 @@ export function initApp() {
             dispatch(navigateWithReset('Home'));
           }
         });
-        dispatch(navigateWithReset('Home'));
       } catch (ex) {
         SplashScreen.hide();
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: initApp');
       }
     };
   }

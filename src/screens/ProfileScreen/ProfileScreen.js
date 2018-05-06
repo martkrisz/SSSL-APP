@@ -12,23 +12,11 @@ class ProfileScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      nickName: "Müzli",
-      rank: "Senior",
-      color: "TTNY",
-      joiningYear: "2014",
-      email: "lycan@sch.bme.hu",
-      phoneNumber: "+36303352244",
-      room: "1701",
-      address: undefined
-    };
-  }
-
-  componentDidMount() {
-    
   }
 
   render() {
+
+    const {profile} = this.props;
 
     return (
       <View style={styles.container}>
@@ -36,14 +24,14 @@ class ProfileScreen extends Component {
           title="PROFILOM"
         />
         <View style={styles.body}>
-          {this._renderListItem("Becenév", this.state.nickName)}
-          {this._renderListItem("Rang", this.state.rank)}
-          {this._renderListItem("Gárda", this.state.color)}
-          {this._renderListItem("Csatlakozás éve", this.state.joiningYear)}
-          {this._renderListItem("E-mail cím", this.state.email)}
-          {this._renderListItem("Telefonszám", this.state.phoneNumber)}
-          {this._renderListItem("Szobaszám", this.state.room)}
-          {this._renderListItem("Lakcím", this.state.address)}
+          {this._renderListItem("Becenév", profile.nick)}
+          {this._renderListItem("Rang", profile.rank)}
+          {this._renderListItem("Gárda", profile.color)}
+          {this._renderListItem("Csatlakozás éve", profile.joined)}
+          {this._renderListItem("E-mail cím", profile.email)}
+          {this._renderListItem("Telefonszám", profile.phone)}
+          {this._renderListItem("Szobaszám", profile.room)}
+          {this._renderListItem("Lakcím", profile.address)}
         </View>
       </View>
     );
@@ -65,7 +53,7 @@ class ProfileScreen extends Component {
 ProfileScreen.propTypes = {};
 
 const mapStateToProps = (state, props) => ({
-
+  profile: state.reducer.loadedProfile.profile
 });
 
 function mapDispatchToProps(dispatch) {

@@ -74,9 +74,7 @@ class LoginScreen extends Component {
                 isPasswordErrorShown: !this.state.password
               })}
               secureTextEntry={true}
-              onSubmitEditing={(event) => {
-                this.onLoginButtonPress
-              }}
+              onSubmitEditing={onLoginButtonPress}
             />
             <SsslButton
               title="Bejelentkezés"
@@ -91,8 +89,7 @@ class LoginScreen extends Component {
 
   login = () => {
     if(this.state.isSubmitted && !this.state.isUserNameErrorShown && !this.state.isPasswordErrorShown) {
-      //this.props.login({userName: this.state.userName, password: this.state.password});
-      this.props.navigation.navigate("Home");
+      this.props.login({userName: this.state.userName, password: this.state.password});
     }
   };
 }

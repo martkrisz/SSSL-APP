@@ -47,11 +47,6 @@ class Api {
     }
 
     static convertBody(params) {
-        /*return Object.keys(params)
-          .map(
-            key => encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
-          )
-          .join("&");*/
         var formData = new FormData();
 
         for (var name in params) {
@@ -62,7 +57,7 @@ class Api {
     }
 
     static xhr(route, params, verb) {
-        const host = "https://virtserver.swaggerhub.com/sssl-web/app/1.0.0"; // TODO mock lecserélése
+        const host = "https://virtserver.swaggerhub.com/martkrisz/sssl-app-mock/1.0.0"; // TODO mock lecserélése
         const url = `${host}${route}`;
 
         if (params != null) {

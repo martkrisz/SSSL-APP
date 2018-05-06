@@ -5,56 +5,50 @@ import { Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
 
-export function getQueries() {
+export function getSingleEvent(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/queries`)
+    /*return Api.get(`/event/${id}`)
       .then(resp => {
         dispatch(
           batchActions(
             [
-              setQueries(resp),
-              GlobalActions.showLoading(false)
+              setSingleEvent(resp),
+              GlobalActions.showLoading(false),
+              GlobalActions.navigateWithReset('SingleEvent')
             ]
           )
         );
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
-        Alert.alert('Hiba', 'Váratlan hiba történt itt: getQueries');
-      })
-  };
-}
-
-export function getSingleQuery(id) {
-  return (dispatch) => {
-    dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/queries/${id}`)
-      .then(resp => {
-        dispatch(
-          batchActions(
-            [
-              setSingleQuery(resp),
-              GlobalActions.showLoading(false)
-            ]
-          )
-        );
-      }).catch(ex => {
-        dispatch(GlobalActions.showLoading(false));
-        Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleQuery');
-      });
+      });*/
+    dispatch(
+      batchActions(
+        [
+          GlobalActions.navigateWithReset('SingleEvent'),
+          GlobalActions.showLoading(false),
+        ]
+      )
+    )
   }
 }
 
-function setQueries(message) {
-  return {
-    type: types.QUERIES_LOADED,
-    message
-  };
+export function modifyApplication(id) {
+  return (dispatch) => {
+    dispatch(GlobalActions.showLoading(true));
+    return Api.put(`/event/${id}`)
+      .then(resp => {
+        dispatch(GlobalActions.showLoading(false));
+      }).catch(ex => {
+        dispatch(GlobalActions.showLoading(false));
+      }
+    );
+  }
 }
 
-function setSingleQuery(message) {
+function setSingleEvent(message) {
   return {
-    type: types.SINGLE_QUERY_LOADED,
+    type: types.SINGLE_EVENT_LOADED,
     message
   };
 }

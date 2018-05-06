@@ -26,7 +26,7 @@ class EventScreen extends Component {
     return (
       <View style={styles.container}>
         <SsslTitleBar
-          title="TÁBORJELENTKEZÉS"
+          title="ESEMÉNYEK"
         />
         <ScrollView style={styles.body}>
           {this._renderItems(events)}
@@ -38,56 +38,33 @@ class EventScreen extends Component {
   _renderItems(data) {
 
     return data.map((element, key) => {
+      const start = new Date(element.start).toLocaleDateString();
+      const end = new Date(element.end).toLocaleDateString();
       return (
-        <View key={key}>
+        <View style={styles.event} key={key}>
           <Text style={styles.eventName}>{element.name}</Text>
-          <Text style={styles.eventDate}>{element.start} - {element.end}</Text>
+          <Text style={styles.eventDate}>{start} - {end}</Text>
           <Text>Helyszín: {element.location.city}, {element.location.address}</Text>
           <Text>Főrendező: {element.contact.name}</Text>
           <Text>E-mail cím: {element.contact.email}</Text>
-          {renderIf(element.status === 'UNFILLED'),
-            <SSSLButton
-              title="Jelentkezés"
-              onPress={this.onApplyPress(element.id)}
-              style={styles.buttonButton}/>
-          }
-          {renderIf(element.status === 'FILLED'),
-          <View>
-            <SSSLButton
-              title="Törlés"
-              onPress={this.onDeletePress(element.id)}
-              style={styles.buttonButton}>
-            </SSSLButton>
-            <SSSLButton
-              title="Módosítás"
-              onPress={this.onModifyPress(element.id)}
-              style={styles.buttonButton}>
-            </SSSLButton>
-          </View>
-          }
+          <SSSLButton
+            title="Formok"
+            onPress={() => this.onPress(element.id)}
+            style={styles.button}/>
         </View>
       )
     })
   }
 
-  onApplyPress(id){
-    this.props.getSingleEvent(id);
-  }
-
-  onDeletePress(id){
-    this.props.deleteApplication(id);
-  }
-
-  onModifyPress(id){
-    this.props.modifyApplication(id);
+  onPress(id){
+    this.props.getForms(id);
   }
 }
 
 EventScreen.propTypes = {};
 
 const mapStateToProps = (state, props) => ({
-  events: state.reducer.loadedEvents.events,
-  singleEventStatus: state.reducer.loadedEvents.singleEventStatus
+  events: state.reducer.loadedEvents.events
 });
 
 function mapDispatchToProps(dispatch) {

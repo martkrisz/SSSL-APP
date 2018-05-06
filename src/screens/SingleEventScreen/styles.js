@@ -10,18 +10,5 @@ export default EStyleSheet.create({
     paddingVertical: "$ssslBodyPadding",
     paddingHorizontal: 20
   },
-
-  query: {
-    marginBottom: 20
-  },
-
-  queryName: {
-    fontSize: 25,
-    color: "$ssslPrimaryColor",
-    marginBottom: 5
-  },
-
-  button: {
-    marginTop: 20
-  }
+  
 });
