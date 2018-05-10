@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, BackHandler, Alert } from 'react-native';
+import { View, BackHandler, Alert, SafeAreaView } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -8,13 +8,14 @@ import { createReactNavigationReduxMiddleware, createReduxBoundAddListener } fro
 import { enableBatching } from 'redux-batched-actions';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import {reducer as network} from 'react-native-offline';
-import {offlineActionTypes} from 'react-native-offline';
-import {withNetworkConnectivity} from 'react-native-offline';
-import {FullscreenLoader} from './components/FullscreenLoader';
+import { reducer as network } from 'react-native-offline';
+import { offlineActionTypes } from 'react-native-offline';
+import { withNetworkConnectivity } from 'react-native-offline';
+import { FullscreenLoader } from './components/FullscreenLoader';
 import reducer from './reducers/reducers';
 import Root from './Router';
 import renderIf from './utils/RenderUtil';
+import empty from './utils/empty';
 
 const checkNetwork = (action) => {
   if (action.type === offlineActionTypes.CONNECTION_CHANGE && action.payload === false) {
@@ -60,9 +61,30 @@ class ReduxNavigation extends PureComponent {
     BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
   }
 
+  isRootScreen = (navigator) => {
+    if (typeof navigator.index == "undefined") return true;
+
+    let isCurrentRoot = navigator.index == 0;
+    if (navigator.routes && !empty(navigator.routes)) {
+      let allChildAreRoots = true;
+
+      navigator.routes.map(r => {
+        if (allChildAreRoots) {
+          if (!this.isRootScreen(r)) {
+            allChildAreRoots = false;
+          }
+        }
+      });
+
+      return allChildAreRoots && isCurrentRoot;
+    }
+
+    return isCurrentRoot;
+  }
+
   onBackPress = () => {
     const { dispatch, nav } = this.props;
-    if (nav.index === 0) {
+    if (this.isRootScreen(nav)) {
       return false;
     }
     dispatch(NavigationActions.back());
@@ -82,7 +104,9 @@ class ReduxNavigation extends PureComponent {
 
     return (
       <View style={{ flex: 1 }}>
-        <AppNavigator navigation={navigation} />
+        <SafeAreaView style={{ flex: 1 }}>
+          <AppNavigator navigation={navigation} />
+        </SafeAreaView>
         {renderIf(
           this.props.global.showLoading.isFetching,
           <FullscreenLoader
@@ -124,7 +148,7 @@ function configureStore(initialState) {
 const store = configureStore({});
 
 let NetworkApp = () => (
-  <View style={{flex: 1}}>
+  <View style={{ flex: 1 }}>
     <ReduxNavigation />
   </View>
 );
@@ -133,10 +157,10 @@ NetworkApp = withNetworkConnectivity({
   withRedux: true
 })(NetworkApp);
 
-export default function App(){
-    return (
-      <Provider store={store}>
-          <NetworkApp/>
-      </Provider>
-    );
+export default function App() {
+  return (
+    <Provider store={store}>
+      <NetworkApp />
+    </Provider>
+  );
 }

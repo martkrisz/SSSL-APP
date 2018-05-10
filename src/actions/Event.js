@@ -4,9 +4,11 @@ import { NavigationActions } from "react-navigation";
 import { Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
+import SplashScreen from "react-native-splash-screen";
 
 export function getEvents() {
   return (dispatch) => {
+    SplashScreen.hide();
     dispatch(GlobalActions.showLoading(true));
     return Api.get(`/events`)
       .then(resp => {

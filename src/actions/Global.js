@@ -12,11 +12,15 @@ export function initApp() {
         AsyncStorage.getItem('api_access', (err, result) => {
           if (err) {
             SplashScreen.hide();
+            debugger;
           }
           if (isEmpty(result)) {
+            debugger
             SplashScreen.hide();
           } else {
+            debugger
             Api.setApiToken(result);
+            SplashScreen.hide();
             dispatch(navigateWithReset('Home'));
           }
         });
