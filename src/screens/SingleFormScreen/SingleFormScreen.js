@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../../actions/actions';
 import styles from './styles';
 
-class SingleEventScreen extends Component {
+class SingleFormScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -22,14 +22,14 @@ class SingleEventScreen extends Component {
   }
 }
 
-SingleEventScreen.propTypes = {};
+SingleFormScreen.propTypes = {};
 
 const mapStateToProps = (state, props) => ({
-  event: state.reducer.loadedEvents.singleEvent
+  form: state.reducer.loadedEvents.singleForm
 });
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleEventScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleFormScreen);

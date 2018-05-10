@@ -6,7 +6,7 @@ import LoginScreen from './screens/LoginScreen/LoginScreen';
 import EventScreen from './screens/EventScreen/EventScreen';
 import QueryScreen from './screens/QueryScreen/QueryScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
-import SingleEventScreen from './screens/SingleEventScreen/SingleEventScreen';
+import SingleFormScreen from './screens/SingleFormScreen/SingleFormScreen';
 import SingleQueryScreen from './screens/SingleQueryScreen/SingleQueryScreen';
 import FormScreen from './screens/FormScreen/FormScreen';
 import Images from './assets/img/Images';
@@ -64,8 +64,8 @@ const Root = {
   Forms: {
     screen: FormScreen
   },
-  SingleEvent: {
-    screen: SingleEventScreen
+  SingleForm: {
+    screen: SingleFormScreen
   },
   SingleQuery: {
     screen: SingleQueryScreen

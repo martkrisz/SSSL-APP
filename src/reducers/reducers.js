@@ -3,7 +3,7 @@ import * as SampleReducer from './Sample';
 import * as QueryReducer from './Query';
 import * as GlobalReducer from './Global';
 import * as EventReducer from './Event';
-import * as SingleEventReducer from './SingleEvent';
+import * as SingleFormReducer from './SingleForm';
 import * as SingleQueryReducer from './SingleQuery';
 import * as FormReducer from './Form';
 import * as AuthReducer from './Auth';
@@ -14,7 +14,7 @@ export default combineReducers(
     QueryReducer, 
     GlobalReducer, 
     EventReducer, 
-    SingleEventReducer, 
+    SingleFormReducer, 
     SingleQueryReducer,
     FormReducer, 
     AuthReducer,

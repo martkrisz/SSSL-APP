@@ -4,7 +4,7 @@ import * as SampleAction from './Sample';
 import * as QueryActions from './Query';
 import * as EventActions from './Event';
 import * as SingleQueryActions from './SingleQuery';
-import * as SingleEventActions from './SingleEvent';
+import * as SingleFormActions from './SingleForm';
 import * as FormActions from './Form'
 
 export const ActionCreators = Object.assign(
@@ -14,7 +14,7 @@ export const ActionCreators = Object.assign(
   QueryActions, 
   EventActions, 
   SingleQueryActions, 
-  SingleEventActions,
+  SingleFormActions,
   FormActions, 
   SampleAction
 );

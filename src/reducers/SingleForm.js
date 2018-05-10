@@ -1,14 +1,14 @@
 import * as types from '../types/types';
 import createReducer from '../utils/createReducer';
 
-export const loadedSingleEvent = (createReducer(
+export const loadedSingleForm = (createReducer(
     {
-      singleEvent: null
+      singleForm: null
     },
     {
-      [types.SINGLE_EVENT_LOADED](state, action) {
+      [types.SINGLE_FORM_LOADED](state, action) {
         let newState = {
-          singleEvent: action.message
+          singleForm: action.message
         };
         return newState;
       }
