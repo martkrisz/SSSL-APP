@@ -21,6 +21,7 @@ export function getQueries() {
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert('Hiba', 'Váratlan hiba történt itt: getQueries');
+        console.log(ex);
       })
   };
 }
@@ -41,6 +42,7 @@ export function getSingleQuery(id) {
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleQuery');
+        console.log(ex);
       });
   }
 }

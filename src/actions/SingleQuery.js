@@ -21,6 +21,8 @@ export function getSingleQuery(id) {
         );
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleQuery');
+        console.log(ex);
       });
   }
 

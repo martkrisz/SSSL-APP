@@ -8,7 +8,17 @@ export default EStyleSheet.create({
 
   body: {
     paddingVertical: "$ssslBodyPadding",
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    display: "flex",
+    flexDirection: "column"
+  },
+
+  field: {
+    marginBottom: 20
+  },
+
+  label: {
+    marginBottom: 10
   },
   
 });

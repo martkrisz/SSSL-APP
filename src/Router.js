@@ -11,16 +11,47 @@ import SingleQueryScreen from './screens/SingleQueryScreen/SingleQueryScreen';
 import FormScreen from './screens/FormScreen/FormScreen';
 import Images from './assets/img/Images';
 
+const navOptions = {
+  navigationOptions: { header: null }
+};
+
+const EventNavigator = StackNavigator({
+  Events: {
+    screen: EventScreen
+  },
+  Forms: {
+    screen: FormScreen
+  },
+  SingleForm: {
+    screen: SingleFormScreen
+  }
+}, navOptions);
+
+const QueryNavigator = StackNavigator({
+  Queries: {
+    screen: QueryScreen
+  },
+  SingleQuery: {
+    screen: SingleQueryScreen
+  }
+}, navOptions);
+
+const ProfileNavigator = StackNavigator({
+  Profile: {
+    screen: ProfileScreen
+  }
+}, navOptions);
+
 const MainTabs = TabNavigator(
   {
     Események: {
-      screen: EventScreen
+      screen: EventNavigator
     },
     Kérdőívek: {
-      screen: QueryScreen
+      screen: QueryNavigator
     },
     Profilom: {
-      screen: ProfileScreen
+      screen: ProfileNavigator
     }
   },
   {

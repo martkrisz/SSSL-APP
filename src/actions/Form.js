@@ -6,12 +6,10 @@ import { Alert } from "react-native";
 import Api from "../utils/api";
 
 export function getForms(id) {
-  debugger;
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
     return Api.get(`/forms/${id}`)
       .then(resp => {
-        debugger
         dispatch(
           batchActions(
             [
@@ -22,10 +20,36 @@ export function getForms(id) {
           )
         );
       }).catch(ex => {
-        Alert.alert('Hiba', 'Váratlan hiba történt itt: getForms');
         dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getForms');
       });
   };
+}
+
+export function deleteForm(id) {
+  return (dispatch) => {
+    dispatch(GlobalActions.showLoading(true));
+    return Api.delete(`/form/${id}`)
+      .then(resp => {
+        dispatch(batchActions(GlobalActions.showLoading(false)));
+        Alert.alert(
+          'Hálózati hiba',
+          'Nem található hálózat.',
+          [
+            {
+              text: 'OK', onPress: () => {
+                getForms(id);
+              }
+            },
+          ],
+          { cancelable: false }
+        )
+      }).catch(ex => {
+        dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: deleteForm');
+        console.log(ex);
+      });
+  }
 }
 
 function setForms(message) {

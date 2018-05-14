@@ -12,21 +12,19 @@ export function initApp() {
         AsyncStorage.getItem('api_access', (err, result) => {
           if (err) {
             SplashScreen.hide();
-            debugger;
           }
           if (isEmpty(result)) {
-            debugger
             SplashScreen.hide();
           } else {
-            debugger
             Api.setApiToken(result);
-            SplashScreen.hide();
             dispatch(navigateWithReset('Home'));
+            SplashScreen.hide();
           }
         });
       } catch (ex) {
         SplashScreen.hide();
         Alert.alert('Hiba', 'Váratlan hiba történt itt: initApp');
+        console.log(ex);
       }
     };
   }

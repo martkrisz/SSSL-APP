@@ -22,9 +22,9 @@ export function login(request) {
                 );
             })
             .catch(ex => {
+                dispatch(GlobalActions.showLoading(false));
                 Alert.alert('Hiba', 'Helytelen felhasználónév vagy jelszó');
                 console.log(ex);
-                dispatch(GlobalActions.showLoading(false));
             });
     };
 }

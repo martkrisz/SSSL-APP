@@ -8,6 +8,7 @@ import styles from './styles';
 import SsslTitleBar from '../../components/SsslTitleBar';
 import SSSLButton from '../../components/SsslButton';
 import renderIf from '../../utils/RenderUtil';
+import SplashScreen from 'react-native-splash-screen';
 
 class FormScreen extends Component {
 
@@ -16,17 +17,19 @@ class FormScreen extends Component {
   }
 
   componentDidMount() {
-
+      SplashScreen.hide();
   }
 
   render() {
 
-    const {forms} = this.props;
+    const { forms } = this.props;
+    const { goBack } = this.props.navigation;
 
     return (
       <View style={styles.container}>
         <SsslTitleBar
           title="FORMOK"
+          backArrow={goBack}
         />
         <ScrollView style={styles.body}>
           {this._renderItems(forms)}
@@ -44,26 +47,26 @@ class FormScreen extends Component {
           <Text style={styles.formName}>{element.name}</Text>
           <Text>Határidő: {deadline}</Text>
           <View style={styles.buttonArea}>
-          {renderIf(!element.isSubmitted,
-            <View style={styles.buttonSection}>
-              <SSSLButton
-                title="Jelentkezés"
-                onPress={() => this.onApplyPress(element.id)}
-                style={styles.applyButton}/>
-            </View>
-          )}
-          {renderIf(element.isSubmitted,
-            <View style={styles.buttonSection}>
-              <SSSLButton
-                title="Módosítás"
-                onPress={() => this.onModifyPress(element.id)}
-                style={styles.modifyButton}/>
-              <SSSLButton
-                title="Törlés"
-                onPress={() => this.onDeletePress(element.id)}
-                style={styles.deleteButton}/>
-            </View>  
-          )}
+            {renderIf(!element.isSubmitted,
+              <View style={styles.buttonSection}>
+                <SSSLButton
+                  title="Jelentkezés"
+                  onPress={() => this.onApplyPress(element.id)}
+                  style={styles.applyButton} />
+              </View>
+            )}
+            {renderIf(element.isSubmitted,
+              <View style={styles.buttonSection}>
+                <SSSLButton
+                  title="Módosítás"
+                  onPress={() => this.onModifyPress(element.id)}
+                  style={styles.modifyButton} />
+                <SSSLButton
+                  title="Törlés"
+                  onPress={() => this.onDeletePress(element.id)}
+                  style={styles.deleteButton} />
+              </View>
+            )}
           </View>
         </View>
       )
@@ -71,15 +74,15 @@ class FormScreen extends Component {
   }
 
   onApplyPress(id) {
-
+    this.props.getSingleForm(id);
   }
 
-  onModifyPress(id){
-
+  onModifyPress(id) {
+    this.props.getSingleForm(id)
   }
 
   onDeletePress(id) {
-    
+    this.props.deleteForm(id);
   }
 
 }

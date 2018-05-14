@@ -8,7 +8,7 @@ import * as GlobalActions from "./Global";
 export function getSingleForm(id) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.get(`/forms/${id}`)
+    return Api.get(`/form/${id}`)
       .then(resp => {
         dispatch(
           batchActions(
@@ -21,6 +21,8 @@ export function getSingleForm(id) {
         );
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleForm');
+        console.log(ex);
       });
   }
 
@@ -33,7 +35,7 @@ export function sendForm(id, payload){
         dispatch(GlobalActions.showLoading(false));
         Alert.alert(
           "",
-          "Sikeresen kitöltötted a kérdőívet!",
+          "Sikeresen kitöltötted a Jelentkezést!",
           [
             {
               text: 'OK', onPress: () => {
@@ -50,13 +52,44 @@ export function sendForm(id, payload){
     }).catch(ex => {
       dispatch(GlobalActions.showLoading(false));
       Alert.alert('Hiba', 'Váratlan hiba történt itt: sendForm');
+      console.log(ex);
+    });
+  }
+}
+
+export function modifyForm(id, payload){
+  return (dispatch) => {
+    dispatch(GlobalActions.showLoading(true));
+    return Api.put(`/forms/${id}`, payload)
+      .then(resp => {
+        dispatch(GlobalActions.showLoading(false));
+        Alert.alert(
+          "",
+          "Sikeresen megváltoztattad a jelentkezésed!",
+          [
+            {
+              text: 'OK', onPress: () => {
+                dispatch(
+                  batchActions([
+                    GlobalActions.navigateWithReset('Home'),
+                    GlobalActions.showLoading(false)
+                  ])
+                );
+              }
+            },
+          ]
+        );
+    }).catch(ex => {
+      dispatch(GlobalActions.showLoading(false));
+      Alert.alert('Hiba', 'Váratlan hiba történt itt: modifyForm');
+      console.log(ex);
     });
   }
 }
 
 function setSingleForm(message) {
   return {
-    type: types.SINGLE_QUERY_LOADED,
+    type: types.SINGLE_FORM_LOADED,
     message
   };
 }

@@ -24,19 +24,21 @@ class SingleQueryScreen extends Component {
 
   render() {
 
-    const {query} = this.props;
+    const { query } = this.props;
+    const { goBack } = this.props.navigation;
 
     return (
       <View style={styles.container}>
         <SsslTitleBar
           title={query.name}
+          backArrow={goBack}
         />
         <KeyboardAwareScrollView style={styles.body}>
-         {this._renderItems(query.fields)} 
-         <SsslButton
-          title="Küldés"
-          onPress={() => this.send(query.id)}
-        />
+          {this._renderItems(query.fields)}
+          <SsslButton
+            title="Küldés"
+            onPress={() => this.send(query.id)}
+          />
         </KeyboardAwareScrollView>
       </View>
     );
@@ -45,7 +47,6 @@ class SingleQueryScreen extends Component {
   _renderItems(data) {
 
     return data.map((element, key) => {
-      console.log(this);
       return (
         <View style={styles.field} key={key}>
           <Text style={styles.label}>{element.label}</Text>
@@ -53,31 +54,30 @@ class SingleQueryScreen extends Component {
             <SsslTextInputField
               errorShown={element.required}
               errorMessage="Kötelező mező"
-              onChangeText={text => this.response[key] = text}
+              onChangeText={text => this.response.push(text)}
             />
           )}
           {renderIf(element.type === 'select' && element.multiple === false,
-            <View style={styles.radioForm}>
-              <RadioForm
-                radio_props={element.choices}
-                initial={0}
-                formHorizontal={false}
-                labelHorizontal={true}
-                buttonColor={'#3399FF'}
-                animation={true}
-                onPress={value => this.response[key] = value}
-              />
-            </View>
+            <RadioForm
+              style={styles.radioForm}
+              radio_props={element.choices}
+              initial={0}
+              formHorizontal={false}
+              labelHorizontal={true}
+              buttonColor={'#3399FF'}
+              animation={true}
+              onPress={value => this.response.push(value)}
+            />
           )}
         </View>
       )
     })
   }
 
-  send(id){
+  send(id) {
     const responseToSend = this.response.map(
       (element, index) => {
-        return {'id': index, 'value': element.toString()}
+        return { 'id': index, 'value': element.toString() }
       }
     );
 

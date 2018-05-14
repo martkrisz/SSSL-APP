@@ -4,11 +4,9 @@ import { NavigationActions } from "react-navigation";
 import { Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
-import SplashScreen from "react-native-splash-screen";
 
 export function getEvents() {
   return (dispatch) => {
-    SplashScreen.hide();
     dispatch(GlobalActions.showLoading(true));
     return Api.get(`/events`)
       .then(resp => {
@@ -21,8 +19,9 @@ export function getEvents() {
           )
         );
       }).catch(ex => {
-        Alert.alert('Hiba', 'Váratlan hiba történt itt: getEvents');
         dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: getEvents');
+        console.log(ex);
       });
   };
 }
@@ -35,40 +34,16 @@ export function getSingleEvent(id) {
         dispatch(
           batchActions(
             [
-              GlobalActions.showLoading(false),
+              setSingleEvent(resp),
+              GlobalActions.showLoading(false)
             ]
           )
         );
       }).catch(ex => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert('Hiba', 'Váratlan hiba történt itt: getSingleEvent');
+        console.log(ex);
       });
-  }
-}
-
-export function deleteApplication(id) {
-  return (dispatch) => {
-    dispatch(GlobalActions.showLoading(true));
-    return Api.delete(`/form/${id}`)
-      .then(resp => {
-        dispatch(GlobalActions.showLoading(false));
-      }).catch(ex => {
-        dispatch(GlobalActions.showLoading(false));
-      }
-    );
-  }
-}
-
-export function modifyApplication(id) {
-  return (dispatch) => {
-    dispatch(GlobalActions.showLoading(true));
-    return Api.put(`/form/${id}`)
-      .then(resp => {
-        dispatch(GlobalActions.showLoading(false));
-      }).catch(ex => {
-        dispatch(GlobalActions.showLoading(false));
-      }
-    );
   }
 }
 

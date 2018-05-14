@@ -8,6 +8,7 @@ import styles from './styles';
 import SsslTitleBar from '../../components/SsslTitleBar';
 import SSSLButton from '../../components/SsslButton';
 import renderIf from '../../utils/RenderUtil';
+import SplashScreen from "react-native-splash-screen";
 
 class EventScreen extends Component {
 
@@ -16,17 +17,20 @@ class EventScreen extends Component {
   }
 
   componentDidMount() {
+    setTimeout(() => SplashScreen.hide(), 500);
     this.props.getEvents();
   }
 
   render() {
 
-    const {events} = this.props;
+    const { events } = this.props;
+    const { goBack } = this.props.navigation;
 
     return (
       <View style={styles.container}>
         <SsslTitleBar
           title="ESEMÉNYEK"
+          backArrow={goBack}
         />
         <ScrollView style={styles.body}>
           {this._renderItems(events)}
@@ -50,13 +54,13 @@ class EventScreen extends Component {
           <SSSLButton
             title="Formok"
             onPress={() => this.onPress(element.id)}
-            style={styles.button}/>
+            style={styles.button} />
         </View>
       )
     })
   }
 
-  onPress(id){
+  onPress(id) {
     this.props.getForms(id);
   }
 }
