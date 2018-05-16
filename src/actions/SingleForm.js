@@ -30,12 +30,12 @@ export function getSingleForm(id) {
 export function sendForm(id, payload){
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.post(`/forms/${id}`, payload)
+    return Api.post(`/form/${id}`, payload)
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert(
           "",
-          "Sikeresen kitöltötted a Jelentkezést!",
+          "Sikeresen kitöltötted a jelentkezést!",
           [
             {
               text: 'OK', onPress: () => {
@@ -60,7 +60,7 @@ export function sendForm(id, payload){
 export function modifyForm(id, payload){
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
-    return Api.put(`/forms/${id}`, payload)
+    return Api.put(`/form/${id}`, payload)
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert(

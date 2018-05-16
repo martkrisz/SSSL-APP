@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import RadioForm from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { ActionCreators } from '../../actions/actions';
@@ -19,13 +19,16 @@ class SingleQueryScreen extends Component {
     state: {
       isSubmitted: false;
     };
-    response: [];
+
+    responses: [];
   }
 
   render() {
 
     const { query } = this.props;
     const { goBack } = this.props.navigation;
+
+    this.responses = new Array(query.fields.length);
 
     return (
       <View style={styles.container}>
@@ -54,7 +57,7 @@ class SingleQueryScreen extends Component {
             <SsslTextInputField
               errorShown={element.required}
               errorMessage="Kötelező mező"
-              onChangeText={text => this.response.push(text)}
+              onChangeText={text => this.responses[key] = text}
             />
           )}
           {renderIf(element.type === 'select' && element.multiple === false,
@@ -66,7 +69,7 @@ class SingleQueryScreen extends Component {
               labelHorizontal={true}
               buttonColor={'#3399FF'}
               animation={true}
-              onPress={value => this.response.push(value)}
+              onPress={value => this.responses[key] = value}
             />
           )}
         </View>
@@ -75,13 +78,13 @@ class SingleQueryScreen extends Component {
   }
 
   send(id) {
-    const responseToSend = this.response.map(
+    const formattedResponses = this.responses.map(
       (element, index) => {
-        return { 'id': index, 'value': element.toString() }
+        return { 'id': index, 'value': element }
       }
     );
 
-    this.props.sendQuery(id, responseToSend);
+    this.props.sendQuery(id, formattedResponses);
   }
 
 }

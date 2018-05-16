@@ -18,14 +18,17 @@ class SingleFormScreen extends Component {
     super(props);
     state: {
       isSubmitted: false
-      response: []
     };
+
+    responses: []
   }
 
   render() {
 
     const { form } = this.props;
     const { goBack } = this.props.navigation;
+
+    this.responses = new Array(form.fields.length);
 
     return (
       <View style={styles.container}>
@@ -54,19 +57,20 @@ class SingleFormScreen extends Component {
             <SsslTextInputField
               errorShown={element.required}
               errorMessage="Kötelező mező"
-              onChangeText={text => this.state.response.push(text).bind(this)}
+              onChangeText={text => this.responses[key] = text}
             />
           )}
           {renderIf(element.type === 'select' && element.multiple === false,
             <View style={styles.radioForm}>
               <RadioForm
+                style={styles.radioForm}
                 radio_props={element.choices}
                 initial={0}
                 formHorizontal={false}
                 labelHorizontal={true}
                 buttonColor={'#3399FF'}
                 animation={true}
-                onPress={value => this.state.response.push(value).bind(this)}
+                onPress={value => this.responses[key] = value}
               />
             </View>
           )}
@@ -76,9 +80,9 @@ class SingleFormScreen extends Component {
   }
 
   send(id) {
-    const responseToSend = this.response.map(
+    const responseToSend = this.responses.map(
       (element, index) => {
-        return { 'id': index, 'value': element.toString() }
+        return { 'id': index, 'value': element}
       }
     );
 

@@ -20,5 +20,10 @@ export default EStyleSheet.create({
   label: {
     marginBottom: 10
   },
+
+  radioForm: {
+    alignItems: "flex-start",
+    alignSelf: "flex-start"
+  }
   
 });
