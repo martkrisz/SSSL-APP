@@ -1,297 +1,297 @@
 {
-	"id": "8f053554-5b8a-4c0d-83a3-8d423ad13f43",
-	"name": "SSSL App",
-	"description": "",
-	"auth": null,
-	"events": null,
-	"variables": [],
-	"order": [
-		"622cd0d4-8528-4412-af24-fed87ad62f14",
-		"01d9dfe7-4657-444e-9e1e-630d8ee0c388",
-		"707da54e-1790-4ff9-95b6-0537c7adeada",
-		"a7e583c9-0793-4e54-836b-752c75947b3b",
-		"3bfccf48-e9d0-4756-bde8-d75b650e4f0b",
-		"30860ce2-a03a-4259-ac96-8ed405fe90ee",
-		"18ee29cf-b523-4993-b194-8f705eb55faa",
-		"a2185f01-400b-4e3d-b87b-f76bff23f39c",
-		"2e25bf37-e56b-4c04-b52e-3dc0331f66a8",
-		"e82c4dbc-b953-4515-8be1-511f610e7efa",
-		"0dbb5116-40e8-4a6e-9844-85dcedc059ed"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
+	"info": {
+		"_postman_id": "8f053554-5b8a-4c0d-83a3-8d423ad13f43",
+		"name": "SSSL App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "01d9dfe7-4657-444e-9e1e-630d8ee0c388",
-			"name": "event/id",
-			"url": "{{ssslBaseUrl}}/event/0",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "0dbb5116-40e8-4a6e-9844-85dcedc059ed",
-			"name": "queries/0",
-			"url": "{{ssslBaseUrl}}/queries/0",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "18ee29cf-b523-4993-b194-8f705eb55faa",
-			"name": "form/id",
-			"url": "{{ssslBaseUrl}}/form/0",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "2e25bf37-e56b-4c04-b52e-3dc0331f66a8",
-			"name": "queries",
-			"url": "{{ssslBaseUrl}}/queries",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "30860ce2-a03a-4259-ac96-8ed405fe90ee",
-			"name": "form/id",
-			"url": "{{ssslBaseUrl}}/form/0",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"rawModeData": "[\r\n  {\r\n    \"id\": 0,\r\n    \"value\": \"string\"\r\n  }\r\n]",
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "3bfccf48-e9d0-4756-bde8-d75b650e4f0b",
-			"name": "form/id",
-			"url": "{{ssslBaseUrl}}/form/0",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"rawModeData": "[\r\n  {\r\n    \"id\": 0,\r\n    \"value\": \"string\"\r\n  }\r\n]",
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "622cd0d4-8528-4412-af24-fed87ad62f14",
 			"name": "events",
-			"url": "{{ssslBaseUrl}}/events",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": false
-				},
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/events",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"events"
+					]
 				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "//Content-Type: application/json\nAccept: application/json\n",
-			"pathVariables": {}
+			},
+			"response": []
 		},
 		{
-			"id": "707da54e-1790-4ff9-95b6-0537c7adeada",
-			"name": "forms",
-			"url": "{{ssslBaseUrl}}/forms",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"name": "event/id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/event/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"event",
+						"0"
+					]
 				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
+			},
+			"response": []
 		},
 		{
-			"id": "a2185f01-400b-4e3d-b87b-f76bff23f39c",
-			"name": "form/0/status",
-			"url": "{{ssslBaseUrl}}/form/0/status",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"name": "forms/eventid",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/forms/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"forms",
+						"0"
+					]
 				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
+			},
+			"response": []
 		},
 		{
-			"id": "a7e583c9-0793-4e54-836b-752c75947b3b",
 			"name": "form/id",
-			"url": "{{ssslBaseUrl}}/form/0",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/form/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"form",
+						"0"
+					]
 				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
+			},
+			"response": []
 		},
 		{
-			"id": "e82c4dbc-b953-4515-8be1-511f610e7efa",
-			"name": "queries/id",
-			"url": "{{ssslBaseUrl}}/queries/0",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"name": "form/id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"value\": \"string\"\r\n  }\r\n]"
+				},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/form/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"form",
+						"0"
+					]
 				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"headers": "Accept: application/json\n",
-			"pathVariables": {}
+			},
+			"response": []
+		},
+		{
+			"name": "form/id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"value\": \"string\"\r\n  }\r\n]"
+				},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/form/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"form",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "form/id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/form/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"form",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userName",
+							"value": "asd",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asd",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/login",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/queries",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"queries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queries/id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/queries/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"queries",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "queries/0",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ssslBaseUrl}}/queries/0",
+					"host": [
+						"{{ssslBaseUrl}}"
+					],
+					"path": [
+						"queries",
+						"0"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

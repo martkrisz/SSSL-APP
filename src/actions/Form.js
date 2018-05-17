@@ -31,10 +31,10 @@ export function deleteForm(id) {
     dispatch(GlobalActions.showLoading(true));
     return Api.delete(`/form/${id}`)
       .then(resp => {
-        dispatch(batchActions(GlobalActions.showLoading(false)));
+        dispatch(GlobalActions.showLoading(false));
         Alert.alert(
-          'Hálózati hiba',
-          'Nem található hálózat.',
+          '',
+          'Sikeresen törölted a jelentkezésed!',
           [
             {
               text: 'OK', onPress: () => {

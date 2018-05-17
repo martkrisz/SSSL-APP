@@ -27,8 +27,7 @@ export function getSingleQuery(id) {
   }
 
 }
-export function sendQuery(id, payload){
-  console.log(payload);
+export function sendQuery(id, payload) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
     return Api.post(`/queries/${id}`, payload)
@@ -51,11 +50,11 @@ export function sendQuery(id, payload){
             },
           ]
         );
-    }).catch(ex => {
-      console.log(ex);
-      dispatch(GlobalActions.showLoading(false));
-      Alert.alert('Hiba', 'Váratlan hiba történt itt: sendQuery');
-    });
+      }).catch(ex => {
+        console.log(ex);
+        dispatch(GlobalActions.showLoading(false));
+        Alert.alert('Hiba', 'Váratlan hiba történt itt: sendQuery');
+      });
   }
 }
 

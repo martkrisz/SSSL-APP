@@ -74,11 +74,11 @@ class FormScreen extends Component {
   }
 
   onApplyPress(id) {
-    this.props.getSingleForm(id);
+    this.props.getSingleForm(id, false);
   }
 
   onModifyPress(id) {
-    this.props.getSingleForm(id)
+    this.props.getSingleForm(id, true)
   }
 
   onDeletePress(id) {

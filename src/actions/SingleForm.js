@@ -5,11 +5,12 @@ import { Alert } from "react-native";
 import { batchActions } from "redux-batched-actions";
 import * as GlobalActions from "./Global";
 
-export function getSingleForm(id) {
+export function getSingleForm(id, isItModification) {
   return (dispatch) => {
     dispatch(GlobalActions.showLoading(true));
     return Api.get(`/form/${id}`)
       .then(resp => {
+        resp['isItModification'] = isItModification;
         dispatch(
           batchActions(
             [
@@ -34,8 +35,8 @@ export function sendForm(id, payload){
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert(
-          "",
-          "Sikeresen kitöltötted a jelentkezést!",
+          '',
+          'Sikeresen kitöltötted a jelentkezést!',
           [
             {
               text: 'OK', onPress: () => {
@@ -64,8 +65,8 @@ export function modifyForm(id, payload){
       .then(resp => {
         dispatch(GlobalActions.showLoading(false));
         Alert.alert(
-          "",
-          "Sikeresen megváltoztattad a jelentkezésed!",
+          '',
+          'Sikeresen megváltoztattad a jelentkezésed!',
           [
             {
               text: 'OK', onPress: () => {

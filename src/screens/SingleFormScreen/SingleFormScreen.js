@@ -80,13 +80,17 @@ class SingleFormScreen extends Component {
   }
 
   send(id) {
+    const { form } = this.props;
     const responseToSend = this.responses.map(
       (element, index) => {
-        return { 'id': index, 'value': element}
+        return { 'id': index, 'value': element }
       }
     );
-
-    this.props.sendForm(id, responseToSend);
+    if (form.isItModification) {
+      this.props.modifyForm(id, responseToSend)
+    } else {
+      this.props.sendForm(id, responseToSend);
+    }
   }
 }
 
